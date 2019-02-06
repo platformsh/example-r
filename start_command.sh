@@ -1,4 +1,7 @@
 #!/bin/bash
+echo "Sourcing conda.sh..."
 . /app/conda/etc/profile.d/conda.sh
-conda activate r-env
+echo "Acivating base conda env..."
+conda activate base
+echo "Running Jupyter Notebook..."
 jupyter notebook --config="~/.jupyter/jupyter_notebook_config.py"

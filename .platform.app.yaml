@@ -10,29 +10,29 @@ name: app
 type: "python:3.7"
 
 # The build-time dependencies of the app.
-# dependencies:
-#     python3:
-#        pipenv: "2018.10.13"
+dependencies:
+    python3:
+       pipenv: "2018.10.13"
 
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
     build: |
       set -e
-      # pipenv install --system --deploy
-      curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o miniconda.sh
+      pipenv install --system --deploy
+      curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o conda.sh
 
       echo "###########################"
-      echo "# Installing Miniconda... #"
+      echo "# Installing conda... #"
       echo "###########################"
 
-      bash miniconda.sh -b -p $HOME/miniconda
-      # export PATH="/app/miniconda/bin:$PATH"
+      bash conda.sh -b -p $HOME/conda
+      # export PATH="/app/conda/bin:$PATH"
 
-      echo ". /app/miniconda/etc/profile.d/conda.sh" >> ~/.bash_profile
-      . /app/miniconda/etc/profile.d/conda.sh
+      echo ". /app/conda/etc/profile.d/conda.sh" >> ~/.bash_profile
+      . /app/conda/etc/profile.d/conda.sh
 
       echo "###########################"
-      echo "# Entering Miniconda...   #"
+      echo "# Entering conda...   #"
       echo "###########################"
 
       conda activate base
@@ -46,7 +46,7 @@ hooks:
       conda create -n mro_env r-base
 
       # echo "CAT activation file:"
-      # cat /app/miniconda/envs/mro_env/etc/conda/activate.d/activate-binutils_linux-64.sh
+      # cat /app/conda/envs/mro_env/etc/conda/activate.d/activate-binutils_linux-64.sh
       conda activate mro_env
 
       echo "Installed R packages:"
@@ -59,11 +59,8 @@ disk: 1024
 # The left-hand side is the name of the relationship as it will be exposed
 # to the application in the PLATFORM_RELATIONSHIPS variable. The right-hand
 # side is in the form `<service name>:<endpoint name>`.
-relationships:
-    mysql: "mysql:mysql"
-    redis: "redis:redis"
 
 # The configuration of app when it is exposed to the web.
-web:
-    commands:
-        start: python server.py
+# web:
+#     commands:
+#         start: python server.py

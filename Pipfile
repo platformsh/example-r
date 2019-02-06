@@ -3,12 +3,6 @@ url = "https://pypi.org/simple"
 name = "pypi"
 verify_ssl = true
 
-[packages]
-redis = "*"
-pymysql = "*"
-flask = "*"
-gevent = "*"
-
 [requires]
 python_version = "3.7"
 

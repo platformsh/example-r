@@ -15,19 +15,18 @@ echo "###########################"
 echo "# Entering conda...   #"
 echo "###########################"
 
-conda activate base
-conda update -n base -c defaults conda
-conda info
+# conda activate base
+# conda update -n base -c defaults conda
+# conda info
 
-echo "###########################"
-echo "# Installing mro-base...  #"
-echo "###########################"
+# echo "###########################"
+# echo "# Installing mro-base...  #"
+# echo "###########################"
+#
+# conda create -n mro_env r-base
+#
+# # echo "CAT activation file:"
+# conda activate mro_env
 
-conda create -n mro_env r-base
-
-# echo "CAT activation file:"
-# cat /app/conda/envs/mro_env/etc/conda/activate.d/activate-binutils_linux-64.sh
-conda activate mro_env
-
-echo "Installed R packages:"
-conda list
+# echo "Installed R packages:"
+# conda list

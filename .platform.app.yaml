@@ -21,6 +21,10 @@ hooks:
 
       bash install_r.sh
 
+      conda activate base
+      conda update -n base -c defaults conda
+      conda info
+
 # The size of the persistent disk of the application (in MB).
 disk: 1024
 # The relationships of the application with services or other applications.

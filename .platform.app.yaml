@@ -17,18 +17,14 @@ type: "python:3.7"
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
     build: |
-      set -e
 
+      # Our build hook uses `dash` rather than `bash`. dash is missing an important
+      # feature that is necessary for the `conda activate` command to run, so we
+      # must write the build hook in a separate script that runs with `bash`.
+      #
+      # NB: If a user connects to the container using `platform ssh`, they'll be
+      # given a bash shell, so all commands will run normally.
       bash install_r.sh
-
-      export PATH="/app/conda/bin:$PATH"
-      . /app/conda/etc/profile.d/conda.sh
-      conda activate base
-      conda update -n base -c defaults conda
-      conda info
-
-      conda create -n mro_env r-base
-      source activate mro_env
 
 # The size of the persistent disk of the application (in MB).
 disk: 1024

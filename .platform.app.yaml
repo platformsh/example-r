@@ -21,13 +21,14 @@ hooks:
 
       bash install_r.sh
 
+      export PATH="/app/conda/bin:$PATH"
       . /app/conda/etc/profile.d/conda.sh
       conda activate base
       conda update -n base -c defaults conda
       conda info
 
       conda create -n mro_env r-base
-      conda activate mro_env
+      source activate mro_env
 
 # The size of the persistent disk of the application (in MB).
 disk: 1024

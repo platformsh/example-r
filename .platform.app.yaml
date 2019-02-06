@@ -27,11 +27,11 @@ hooks:
       bash install_r.sh
 
 # The size of the persistent disk of the application (in MB).
-disk: 1024
+disk: 2048
 mounts:
     ".jupyter":
         source: local
-        source_path: ".jupyter"
+        source_path: "jupyter_config"
 # The relationships of the application with services or other applications.
 #
 # The left-hand side is the name of the relationship as it will be exposed

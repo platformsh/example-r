@@ -17,14 +17,14 @@ type: "python:3.7"
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
     build: |
-      pipenv install --system --deploy
+      # pipenv install --system --deploy
       curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o miniconda.sh
 
       echo "Installing Miniconda..."
 
       bash miniconda.sh -b -p $HOME/miniconda
       # export PATH="/app/miniconda/bin:$PATH"
-      echo ". /app/miniconda/etc/profile.d/conda.sh" >> ~/.bashrc
+      exec /bin/bash
       . /app/miniconda/etc/profile.d/conda.sh
 
       echo "Entering Miniconda environment..."
@@ -32,9 +32,9 @@ hooks:
       conda activate
       conda list
 
-      echo "Installing R with r-essentials..."
+      # echo "Installing R with r-essentials..."
 
-      conda create -n mro_env mro-base
+      conda create -n mro_env
       conda activate mro_env
 
       echo "Installed R packages:"

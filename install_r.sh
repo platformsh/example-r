@@ -27,6 +27,7 @@ bash conda.sh -b -p $HOME/conda
 
 # Add the above command to `.bash_profile` so that it is available during SSH sessions
 echo ". /app/conda/etc/profile.d/conda.sh" >> ~/.bash_profile
+echo "conda activate" >> ~/.bash_profile
 
 ###########################
 # Configure conda...

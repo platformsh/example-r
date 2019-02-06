@@ -26,12 +26,24 @@ hooks:
       # given a bash shell, so all commands will run normally.
       bash install_r.sh
 
+    deploy: |
+      set -e
+      cp jupyter_notebook_config.py ~/.jupyter/
+
+      conda activate r-env
+
 # The size of the persistent disk of the application (in MB).
 disk: 2048
 mounts:
     "/.jupyter":
         source: local
-        source_path: "jupyter_config"
+        source_path: "jupyter_config_dir"
+    "/.local/share/jupyter":
+        source: local
+        source_path: "jupyter_path"
+    "/jupyter/notebooks":
+        source: local
+        source_path: "jupyter_notebooks"
 # The relationships of the application with services or other applications.
 #
 # The left-hand side is the name of the relationship as it will be exposed
@@ -39,6 +51,12 @@ mounts:
 # side is in the form `<service name>:<endpoint name>`.
 
 # The configuration of app when it is exposed to the web.
-# web:
-#     commands:
-#         start: python server.py
+web:
+    commands:
+        start: jupyter notebook --config="~/.jupyter/jupyter_notebook_config.py"
+    upstream:
+        socket_family: tcp
+        protocol: http
+    locations:
+        "/":
+            passthru: true

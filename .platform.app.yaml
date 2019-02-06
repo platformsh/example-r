@@ -21,6 +21,7 @@ hooks:
 
       bash install_r.sh
 
+      . /app/conda/etc/profile.d/conda.sh
       conda activate base
       conda update -n base -c defaults conda
       conda info

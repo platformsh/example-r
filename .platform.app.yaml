@@ -19,6 +19,8 @@ hooks:
     build: |
       set -e
       # pipenv install --system --deploy
+      echo $0
+      exit 1
       curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o conda.sh
 
       echo "###########################"

@@ -40,9 +40,9 @@ hooks:
 
       # Run the downloaded `conda.sh` script using bash
       #
-      # — The `-b` flag runs the installer in batch mode, which automatically accepts the
+      # - The `-b` flag runs the installer in batch mode, which automatically accepts the
       # license agreement and makes no PATH modifications.
-      # — The `-p` flag specifies where the package manager will actually be installed
+      # - The `-p` flag specifies where the package manager will actually be installed
       #
       # More information on silent mode installation: https://conda.io/projects/conda/en/latest/user-guide/install/macos.html#installing-in-silent-mode
       # (Note: In the above link, the `export PATH` command should not be included here.)

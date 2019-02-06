@@ -45,32 +45,23 @@ conda info
 # Install R
 ###########################
 
-# Based on the instructions given here: https://docs.anaconda.com/anaconda/user-guide/tasks/use-r-language/#creating-an-environment-with-mro-and-r-essentials
+# Based on the instructions given here: https://docs.anaconda.com/anaconda/user-guide/tasks/use-r-language/#creating-a-new-environment-with-r-instead-of-mro
 #
-# This installs MRO rather than vanilla R:
-#
-#    "Microsoft R Open is the enhanced distribution of R from Microsoft Corporation.
-#    It is a complete open source platform for statistical analysis and data science.
-#    The current version, Microsoft R Open 3.5.1, is based on (and 100% compatible with) R-3.5.1,
-#    the most widely used statistics software in the world, and is therefore fully
-#    compatibility with all packages, scripts and applications that work with that version of R."
-
 # NOTE: When using conda to install R packages, you will need to add r- before
 # the regular CRAN or MRAN name. For instance, if you want to install rbokeh,
 # you will need to use `conda install r-rbokeh`.
-
+#
+# NOTE: MRO is not currently compatible with Debian, so vanilla R should be installed.
+#
 # `conda create` is used to create a new virtual environment for package installation
 #
 # The `-n` flag gives the environment its name.
-# `mro-base` installs the bare minimum necessary to run R.
+# `r-base` installs the bare minimum necessary to run R.
 # `r-essentials` installs over 400 of the most commonly used R packages
-echo "Install:"
-conda create -n mro_env r-essentials mro-base
+conda create -n r-env r-essentials r-base
 
-echo "Activate:"
 # Activate the freshly created environment
-conda activate mro_env
+conda activate r-env
 
-echo "List:"
 # List the packages that were installed in this environment
 conda list

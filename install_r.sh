@@ -64,10 +64,13 @@ conda info
 # The `-n` flag gives the environment its name.
 # `mro-base` installs the bare minimum necessary to run R.
 # `r-essentials` installs over 400 of the most commonly used R packages
-conda create -v -n mro_env r-essentials r-base
+echo "Install:"
+conda create -n mro_env r-essentials mro-base
 
+echo "Activate:"
 # Activate the freshly created environment
-conda activate -v mro_env
+conda activate mro_env
 
+echo "List:"
 # List the packages that were installed in this environment
 conda list

@@ -19,20 +19,19 @@ hooks:
     build: |
       set -e
       # pipenv install --system --deploy
-      curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o miniconda.sh
+      curl https://repo.anaconda.com/archive/Anaconda3-2018.12-Linux-x86_64.sh -o anaconda.sh
 
       echo "###########################"
-      echo "# Installing Miniconda... #"
+      echo "# Installing anaconda... #"
       echo "###########################"
 
-      bash miniconda.sh -b -p $HOME/miniconda
-      # export PATH="/app/miniconda/bin:$PATH"
+      bash anaconda.sh -b -p $HOME/anaconda
+      # export PATH="/app/anaconda/bin:$PATH"
 
-      ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh
-      . /etc/profile.d/conda.sh
+      . /app/anaconda/etc/profile.d/conda.sh
 
       echo "###########################"
-      echo "# Entering Miniconda...   #"
+      echo "# Entering anaconda...   #"
       echo "###########################"
       exit 1
 
@@ -47,7 +46,7 @@ hooks:
       conda create -n mro_env mro-base
 
       echo "CAT activation file:"
-      cat /app/miniconda/envs/mro_env/etc/conda/activate.d/activate-binutils_linux-64.sh
+      cat /app/anaconda/envs/mro_env/etc/conda/activate.d/activate-binutils_linux-64.sh
       conda activate mro_env
 
       echo "Installed R packages:"

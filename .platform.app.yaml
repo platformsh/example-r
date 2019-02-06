@@ -24,7 +24,7 @@ hooks:
 
       bash miniconda.sh -b -p $HOME/miniconda
       # export PATH="/app/miniconda/bin:$PATH"
-      exec /bin/bash
+
       . /app/miniconda/etc/profile.d/conda.sh
 
       echo "Entering Miniconda environment..."

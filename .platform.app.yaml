@@ -17,6 +17,7 @@ type: "python:3.7"
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
     build: |
+      set -e
       # pipenv install --system --deploy
       curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o miniconda.sh
 
@@ -27,11 +28,13 @@ hooks:
       bash miniconda.sh -b -p $HOME/miniconda
       # export PATH="/app/miniconda/bin:$PATH"
 
-      . /app/miniconda/etc/profile.d/conda.sh
+      ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh
+      . /etc/profile.d/conda.sh
 
       echo "###########################"
       echo "# Entering Miniconda...   #"
       echo "###########################"
+      exit 1
 
       conda activate base
       conda update -n base -c defaults conda

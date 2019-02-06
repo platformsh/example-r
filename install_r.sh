@@ -40,6 +40,7 @@ conda update -n base -c defaults conda
 
 # Print out debugging information
 conda info
+exit 0
 
 ###########################
 # Install R

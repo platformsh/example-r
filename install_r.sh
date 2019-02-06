@@ -37,6 +37,7 @@ conda activate base
 
 # Update conda itself
 conda update -n base -c defaults conda
+conda install jupyter
 
 # Print out debugging information
 conda info

@@ -29,7 +29,7 @@ hooks:
 # The size of the persistent disk of the application (in MB).
 disk: 2048
 mounts:
-    ".jupyter":
+    "/.jupyter":
         source: local
         source_path: "jupyter_config"
 # The relationships of the application with services or other applications.

@@ -18,12 +18,10 @@ type: "python:3.7"
 hooks:
     build: |
       set -e
-      # pipenv install --system --deploy
+      #!/bin/bash
       echo $0
-      bash
-      echo $0
-      exec $SHELL
       exit 1
+
       curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o conda.sh
 
       echo "###########################"

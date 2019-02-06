@@ -20,21 +20,28 @@ hooks:
       # pipenv install --system --deploy
       curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o miniconda.sh
 
-      echo "Installing Miniconda..."
+      echo "###########################"
+      echo "# Installing Miniconda... #"
+      echo "###########################"
 
       bash miniconda.sh -b -p $HOME/miniconda
       # export PATH="/app/miniconda/bin:$PATH"
 
       . /app/miniconda/etc/profile.d/conda.sh
 
-      echo "Entering Miniconda environment..."
+      echo "###########################"
+      echo "# Entering Miniconda...   #"
+      echo "###########################"
 
       conda activate
+      conda update -n base -c defaults conda
       conda list
 
-      # echo "Installing R with r-essentials..."
+      echo "###########################"
+      echo "# Installing mro-base...  #"
+      echo "###########################"
 
-      conda create -n mro_env
+      conda create -n mro_env mro-base
       conda activate mro_env
 
       echo "Installed R packages:"

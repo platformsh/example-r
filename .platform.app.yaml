@@ -38,16 +38,15 @@ hooks:
       conda activate base
       conda update -n base -c defaults conda
       conda info
-      exit 1
 
       echo "###########################"
       echo "# Installing mro-base...  #"
       echo "###########################"
 
-      conda create -n mro_env mro-base
+      conda create -n mro_env r-base
 
-      echo "CAT activation file:"
-      cat /app/miniconda/envs/mro_env/etc/conda/activate.d/activate-binutils_linux-64.sh
+      # echo "CAT activation file:"
+      # cat /app/miniconda/envs/mro_env/etc/conda/activate.d/activate-binutils_linux-64.sh
       conda activate mro_env
 
       echo "Installed R packages:"

@@ -30,7 +30,7 @@ hooks:
       set -e
       cp jupyter_notebook_config.py ~/.jupyter/
 
-      conda activate r-env
+      chmod +x start_command.sh
 
 # The size of the persistent disk of the application (in MB).
 disk: 2048
@@ -53,7 +53,7 @@ mounts:
 # The configuration of app when it is exposed to the web.
 web:
     commands:
-        start: conda activate r-env && jupyter notebook --config="~/.jupyter/jupyter_notebook_config.py"
+        start: ./start_command.sh
     upstream:
         socket_family: tcp
         protocol: http

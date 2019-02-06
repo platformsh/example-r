@@ -53,7 +53,7 @@ mounts:
 # The configuration of app when it is exposed to the web.
 web:
     commands:
-        start: ./start_command.sh
+        start: bash ./start_command.sh
     upstream:
         socket_family: tcp
         protocol: http

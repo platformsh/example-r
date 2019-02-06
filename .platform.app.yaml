@@ -19,25 +19,26 @@ hooks:
     build: |
       set -e
       # pipenv install --system --deploy
-      curl https://repo.anaconda.com/archive/Anaconda3-2018.12-Linux-x86_64.sh -o anaconda.sh
+      curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o miniconda.sh
 
       echo "###########################"
-      echo "# Installing anaconda... #"
+      echo "# Installing Miniconda... #"
       echo "###########################"
 
-      bash anaconda.sh -b -p $HOME/anaconda
-      # export PATH="/app/anaconda/bin:$PATH"
+      bash miniconda.sh -b -p $HOME/miniconda
+      # export PATH="/app/miniconda/bin:$PATH"
 
-      . /app/anaconda/etc/profile.d/conda.sh
+      echo ". /app/miniconda/etc/profile.d/conda.sh" >> ~/.bash_profile
+      . /app/miniconda/etc/profile.d/conda.sh
 
       echo "###########################"
-      echo "# Entering anaconda...   #"
+      echo "# Entering Miniconda...   #"
       echo "###########################"
-      exit 1
 
       conda activate base
       conda update -n base -c defaults conda
-      conda list
+      conda info
+      exit 1
 
       echo "###########################"
       echo "# Installing mro-base...  #"
@@ -46,7 +47,7 @@ hooks:
       conda create -n mro_env mro-base
 
       echo "CAT activation file:"
-      cat /app/anaconda/envs/mro_env/etc/conda/activate.d/activate-binutils_linux-64.sh
+      cat /app/miniconda/envs/mro_env/etc/conda/activate.d/activate-binutils_linux-64.sh
       conda activate mro_env
 
       echo "Installed R packages:"

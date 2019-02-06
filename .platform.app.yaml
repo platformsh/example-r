@@ -10,15 +10,15 @@ name: app
 type: "python:3.7"
 
 # The build-time dependencies of the app.
-dependencies:
-    python3:
-       pipenv: "2018.10.13"
+# dependencies:
+#     python3:
+#        pipenv: "2018.10.13"
 
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
     build: |
       set -e
-      pipenv install --system --deploy
+      # pipenv install --system --deploy
       curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o conda.sh
 
       echo "###########################"

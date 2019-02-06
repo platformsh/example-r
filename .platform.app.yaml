@@ -19,9 +19,23 @@ hooks:
     build: |
       pipenv install --system --deploy
       curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o miniconda.sh
+
+      echo "Installing Miniconda..."
+
       bash miniconda.sh -b -p $HOME/miniconda
       export PATH="$HOME/miniconda/bin:$PATH"
+
+      echo "Entering Miniconda environment..."
+
       source $HOME/miniconda/bin/activate
+      conda list
+
+      echo "Installing R..."
+
+      conda create -n mro_env r-essentials mro-base
+      conda activate mro_env
+
+      echo "Installed R packages:"
       conda list
 
 # The size of the persistent disk of the application (in MB).

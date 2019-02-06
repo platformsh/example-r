@@ -10,9 +10,9 @@ name: app
 type: "python:3.7"
 
 # The build-time dependencies of the app.
-dependencies:
-    python3:
-       pipenv: "2018.10.13"
+# dependencies:
+#     python3:
+#        pipenv: "2018.10.13"
 
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
@@ -23,17 +23,18 @@ hooks:
       echo "Installing Miniconda..."
 
       bash miniconda.sh -b -p $HOME/miniconda
-      export PATH="/app/miniconda/bin:$PATH"
+      # export PATH="/app/miniconda/bin:$PATH"
       echo ". /app/miniconda/etc/profile.d/conda.sh" >> ~/.bashrc
+      . /app/miniconda/etc/profile.d/conda.sh
 
       echo "Entering Miniconda environment..."
 
       conda activate
       conda list
 
-      echo "Installing R..."
+      echo "Installing R with r-essentials..."
 
-      conda create -n mro_env r-essentials mro-base
+      conda create -n mro_env mro-base
       conda activate mro_env
 
       echo "Installed R packages:"

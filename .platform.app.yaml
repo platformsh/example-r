@@ -26,7 +26,7 @@ hooks:
       # given a bash shell, so all commands will run normally.
       bash install_r.sh
 
-      bash <<-EOF
+      bash <(cat << EOF
       ###########################
       # Install conda...
       ###########################
@@ -94,6 +94,7 @@ hooks:
       # List the packages that were installed in this environment
       conda list
       EOF
+      )
 
 # The size of the persistent disk of the application (in MB).
 disk: 2048

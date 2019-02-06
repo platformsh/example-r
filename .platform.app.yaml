@@ -23,11 +23,13 @@ hooks:
       echo "Installing Miniconda..."
 
       bash miniconda.sh -b -p $HOME/miniconda
-      export PATH="$HOME/miniconda/bin:$PATH"
+      echo ". /app/miniconda/etc/profile.d/conda.sh" >> ~/.bashrc
+
+
 
       echo "Entering Miniconda environment..."
 
-      source $HOME/miniconda/bin/activate
+      conda activate
       conda list
 
       echo "Installing R..."

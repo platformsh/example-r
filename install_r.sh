@@ -9,6 +9,7 @@
 # Miniconda is a standalone package manager, while Anaconda is the package manager
 # plus a large selection of bundled packages. Because we want R packages rather
 # than Python packages, we will just use Miniconda to get the package manager.
+# If you wish to install Anaconda instead of Miniconda, replace the URL below as needed.
 curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o conda.sh
 
 # Run the downloaded `conda.sh` script using bash

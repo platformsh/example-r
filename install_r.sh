@@ -38,10 +38,9 @@ conda activate base
 
 # Update conda itself
 conda update -n base -c defaults conda
-conda install jupyter
 
 # Print out debugging information
-conda info
+# conda info
 
 ###########################
 # Install R
@@ -64,6 +63,9 @@ conda create -n r-env r-essentials r-base
 
 # Activate the freshly created environment
 conda activate r-env
+
+# Install additional packages if desired
+# conda install r-rbokeh
 
 # List the packages that were installed in this environment
 conda list

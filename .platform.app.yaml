@@ -1,55 +1,57 @@
-# This file describes an application. You can have multiple applications
-# in the same project.
-#
-# See https://docs.platform.sh/user_guide/reference/platform-app-yaml.html
-
 # The name of this app. Must be unique within a project.
 name: app
 
 # The runtime the application uses.
 type: "python:3.7"
 
-# The build-time dependencies of the app.
-# dependencies:
-#     python3:
-#        pipenv: "2018.10.13"
-
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
     build: |
+      set -e
 
       # Our build hook uses `dash` rather than `bash`. dash is missing an important
       # feature that is necessary for the `conda activate` command to run, so we
       # must write the build hook in a separate script that runs with `bash`.
-      #
-      # NB: If a user connects to the container using `platform ssh`, they'll be
+
+      # NOTE: If a user connects to the container using `platform ssh`, they'll be
       # given a bash shell, so all commands will run normally.
+
+      # See the contents of `install_r.sh` for the rest of the build hook.
+
       bash install_r.sh
 
     deploy: |
       set -e
+
+      # Copy a default configuration file into the proper config directory
       cp default_config.py ~/.jupyter/jupyter_notebook_config.py
+
+      # Make the sample notebook accessible to the Jupyter server
       cp sample_notebooks/* ~/jupyter/notebooks
 
+      # Make the start script executable
       chmod +x start_command.sh
 
 # The size of the persistent disk of the application (in MB).
 disk: 2048
+
+# The writable mounts within the application container
 mounts:
+
+    # ~/.jupyter - Used for storing configuration files
     "/.jupyter":
         source: local
         source_path: "jupyter_config_dir"
+
+    # ~/.local/share/jupyter - Jupyter's runtime data directory
     "/.local/share/jupyter":
         source: local
         source_path: "jupyter_path"
+
+    # ~/jupyter/notebooks - The location where editable Notebooks are stored
     "/jupyter/notebooks":
         source: local
         source_path: "jupyter_notebooks"
-# The relationships of the application with services or other applications.
-#
-# The left-hand side is the name of the relationship as it will be exposed
-# to the application in the PLATFORM_RELATIONSHIPS variable. The right-hand
-# side is in the form `<service name>:<endpoint name>`.
 
 # The configuration of app when it is exposed to the web.
 web:
@@ -66,6 +68,8 @@ variables:
     env:
         PORT: 8888
 
+# This cron would never be used on a live site. It simply exists to clear Notebooks
+# from Jupyter on a daily basis and insert fresh sample notebooks
 crons:
     delete_notebooks:
         spec: '0 0 * * *'

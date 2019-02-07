@@ -1,7 +1,10 @@
 #!/bin/bash
-echo "Sourcing conda.sh..."
+
+# Source the `conda.sh` file to make this particular shell session able to run the `conda` command
 . /app/conda/etc/profile.d/conda.sh
-echo "Acivating base conda env..."
+
+# Activate the `r-env` conda environment that was created in the build hook
 conda activate r-env
-echo "Running Jupyter Notebook..."
+
+# Run the jupyter notebook server, specifying the config file to use
 jupyter notebook --config="~/.jupyter/jupyter_notebook_config.py"

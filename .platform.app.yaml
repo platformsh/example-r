@@ -73,4 +73,4 @@ variables:
 crons:
     delete_notebooks:
         spec: '0 0 * * *'
-        cmd: 'rm -rf ~/jupyter/notebooks/* && cp ~/sample_notebooks/* ~/jupyter/notebooks'
+        cmd: 'rm -rf ~/jupyter/notebooks/* && cp ~/sample_notebooks/* ~/jupyter/notebooks && pkill -f jupyter'

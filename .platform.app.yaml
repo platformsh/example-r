@@ -60,3 +60,7 @@ web:
     locations:
         "/":
             passthru: true
+
+variables:
+    env:
+        PORT: 8888

@@ -9,14 +9,3 @@ https://{default}/:
   id: http
   cache:
       enabled: false
-
-http://ws.{default}/:
-  type: redirect
-  to: "https://ws.{default}/"
-
-https://ws.{default}/:
-  type: upstream
-  upstream: "app:http"
-  id: ws
-  cache:
-      enabled: false

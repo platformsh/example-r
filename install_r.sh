@@ -42,7 +42,6 @@ conda install jupyter
 
 # Print out debugging information
 conda info
-exit 0
 
 ###########################
 # Install R

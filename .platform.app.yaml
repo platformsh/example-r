@@ -28,7 +28,8 @@ hooks:
 
     deploy: |
       set -e
-      cp jupyter_notebook_config.py ~/.jupyter/
+      cp default_config.py ~/.jupyter/jupyter_notebook_config.py
+      cp sample_notebooks/* ~/jupyter/notebooks
 
       chmod +x start_command.sh
 
@@ -64,3 +65,8 @@ web:
 variables:
     env:
         PORT: 8888
+
+crons:
+    delete_notebooks:
+        spec: '0 0 * * *'
+        cmd: 'rm -rf ~/jupyter/notebooks/* && cp ~/sample_notebooks/* ~/jupyter/notebooks'

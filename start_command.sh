@@ -7,6 +7,4 @@
 
 # Activate the `r-env` conda environment that was created in the build hook
 conda activate r-env
-
-# Run the jupyter notebook server, specifying the config file to use
-jupyter notebook --config="~/.jupyter/jupyter_notebook_config.py"
+Rscript start_shinyapp.R 

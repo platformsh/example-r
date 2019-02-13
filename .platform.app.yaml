@@ -23,35 +23,11 @@ hooks:
     deploy: |
       set -e
 
-      # Copy a default configuration file into the proper config directory
-      cp default_config.py ~/.jupyter/jupyter_notebook_config.py
-
-      # Make the sample notebook accessible to the Jupyter server
-      cp sample_notebooks/* ~/jupyter/notebooks
-
       # Make the start script executable
       chmod +x start_command.sh
 
 # The size of the persistent disk of the application (in MB).
 disk: 2048
-
-# The writable mounts within the application container
-mounts:
-
-    # ~/.jupyter - Used for storing configuration files
-    "/.jupyter":
-        source: local
-        source_path: "jupyter_config_dir"
-
-    # ~/.local/share/jupyter - Jupyter's runtime data directory
-    "/.local/share/jupyter":
-        source: local
-        source_path: "jupyter_path"
-
-    # ~/jupyter/notebooks - The location where editable Notebooks are stored
-    "/jupyter/notebooks":
-        source: local
-        source_path: "jupyter_notebooks"
 
 # The configuration of app when it is exposed to the web.
 web:
@@ -67,10 +43,3 @@ web:
 variables:
     env:
         PORT: 8888
-
-# This cron would never be used on a live site. It simply exists to clear Notebooks
-# from Jupyter on a daily basis and insert fresh sample notebooks
-crons:
-    delete_notebooks:
-        spec: '0 0 * * *'
-        cmd: 'rm -rf ~/jupyter/notebooks/* && cp ~/sample_notebooks/* ~/jupyter/notebooks && pkill -f jupyter'

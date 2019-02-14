@@ -27,7 +27,7 @@ hooks:
       chmod +x start_command.sh
 
 # The size of the persistent disk of the application (in MB).
-disk: 2048
+disk: 3072
 
 # The configuration of app when it is exposed to the web.
 web:

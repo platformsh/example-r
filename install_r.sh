@@ -60,13 +60,13 @@ conda update -n base -c defaults conda
 # The `-n` flag gives the environment its name.
 # `r-base` installs the bare minimum necessary to run R.
 # `r-essentials` installs over 400 of the most commonly used R packages
-conda create -n r-env r-essentials r-base
-
-# Activate the freshly created environment
-conda activate r-env
-
-# Install additional packages if desired
-# conda install r-rbokeh
-
-# List the packages that were installed in this environment
-conda list
+# conda create -n r-env r-essentials r-base
+#
+# # Activate the freshly created environment
+# conda activate r-env
+#
+# # Install additional packages if desired
+# # conda install r-rbokeh
+#
+# # List the packages that were installed in this environment
+# conda list
